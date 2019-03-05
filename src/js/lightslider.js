@@ -964,6 +964,17 @@
                     $slide.find('.lSAction').show();
                 }
             }
+            if (settings.vertical === false && settings.mode === 'slide' && settings.biggestHeight === true) {
+              var tH = 0;
+              $el.css('height', 'auto');
+              $children.css('height', 'auto');
+              $children.each(function() {
+                if ($(this).outerHeight() > tH) {
+                  tH = $(this).outerHeight();
+                }
+              });
+              $children.css('height', tH + 'px');
+            }
         };
         $el.goToPrevSlide = function () {
             if (scene > 0) {
